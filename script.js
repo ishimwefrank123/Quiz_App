@@ -12,7 +12,7 @@
         question: "Which is the smalledst country in the world?",
         answers:[
             {text: "Vatoican City", correct:true},
-            {text: "Bhutan", correct:true},
+            {text: "Bhutan", correct:false},
             {text: "Nepal", correct:false},
             {text: "Shri Lanka", correct:false}
         ] 
@@ -85,6 +85,7 @@
     const isCorrect = selectedBtn.dataset.correct === "true";
     if(isCorrect){
         selectedBtn.classList.add("correct");
+        score++;
     }else{
         selectedBtn.classList.add("incorrect");
     }
@@ -97,5 +98,31 @@
     });
     nextButton.style.display = "block";
    }
+
+
+   function showScore(){
+    resetState();
+    questionElement.innerHTML = `You scored ${score} out of ${questions.length}!`;
+    nextButton.innerHTML = "Play Again";
+    nextButton.style.display = "block";
+   }
+
+   function handleNextButton(){
+     currentQuestionIndex++;
+     if(currentQuestionIndex < questions.length){
+        showQuestion();
+     }else{
+        showScore(); 
+     }
+   }
+
+   nextButton.addEventListener("click", () => { 
+    if (currentQuestionIndex < questions.length){
+        handleNextButton();
+    }
+    else{
+        startQuiz()
+    }
+   });
 
   startQuiz();

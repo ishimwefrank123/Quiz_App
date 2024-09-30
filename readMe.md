@@ -1,0 +1,1 @@
+#this is the app for doing quiz. this will allows you to choose the answer if it is correct your score increase if it incorrect it show you the correct answer and at the end it gives you chance to play again
